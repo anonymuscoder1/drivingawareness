@@ -844,7 +844,15 @@ export default function LevelPlayer() {
 
 	return (
 		<div className="video-screen">
-			<video ref={videoRef} className="video-el" src={source} controls={false} playsInline />
+			<video
+				ref={videoRef}
+				className="video-el"
+				src={source}
+				muted
+				playsInline
+				preload="auto"
+			/>
+
 
 			{/* Gamepad Connection Status (short toast) */}
 			{showGamepadToast && (
@@ -1373,22 +1381,7 @@ export default function LevelPlayer() {
 					</div>
 				</div>
 			)}
-			{/* 🔥 ANDROID TV FIX — DO NOT REMOVE */}
-			<video
-				ref={videoRef}
-				muted
-				playsInline
-				preload="auto"
-				style={{
-					position: "absolute",
-					top: 0,
-					left: 0,
-					width: "100%",
-					height: "100%",
-					objectFit: "cover",
-					zIndex: -1
-				}}
-			/>
+
 		</div>
 	)
 }
