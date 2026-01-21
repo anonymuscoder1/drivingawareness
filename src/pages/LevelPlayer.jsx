@@ -270,13 +270,28 @@ export default function LevelPlayer() {
 	useEffect(() => {
 		const video = videoRef.current
 		if (!video) return
+
+		// 🔥 Android TV / WebView permission flags
+		video.muted = true
+		video.autoplay = true      // permission only
+		video.playsInline = true
+		video.preload = "auto"
+
+		// 🚗 GAME LOGIC
 		if (targetRate <= 0) {
-			video.pause()
+			video.pause()            // car is stopped
 			return
 		}
+
 		video.playbackRate = Math.min(Math.max(targetRate, 0.1), 2)
-		video.play().catch(() => { })
+
+		const playPromise = video.play()
+		if (playPromise) {
+			playPromise.catch(() => { })
+		}
 	}, [targetRate])
+
+
 
 	function nudgeRate(delta) {
 		setTargetRate(prev => {
