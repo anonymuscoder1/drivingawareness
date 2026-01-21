@@ -1373,6 +1373,22 @@ export default function LevelPlayer() {
 					</div>
 				</div>
 			)}
+			{/* 🔥 ANDROID TV FIX — DO NOT REMOVE */}
+			<video
+				ref={videoRef}
+				muted
+				playsInline
+				preload="auto"
+				style={{
+					position: "absolute",
+					top: 0,
+					left: 0,
+					width: "100%",
+					height: "100%",
+					objectFit: "cover",
+					zIndex: -1
+				}}
+			/>
 		</div>
 	)
 }
