@@ -272,7 +272,7 @@ export default function LevelPlayer() {
 		if (!video) return
 
 		// 🔥 Android TV / WebView permission flags
-		video.muted = true
+		video.muted = false
 		video.autoplay = true      // permission only
 		video.playsInline = true
 		video.preload = "auto"
